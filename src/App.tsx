@@ -1,24 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect } from 'react';
+import { WeatherGrid } from './WeatherGrid';
+import { type WeatherData } from './ApiInterface';
 
 function App() {
+  const [weather, setWeather] = useState<WeatherData>();
+
+  const fetchWeatherData = async () => {
+    await fetch(
+      `http://api.weatherapi.com/v1/forecast.json?key=b6ce0c4ce6d646c8aaf91548240702&&q=London&days=3`
+    )
+      .then((res) => res.json()) // parse response as JSON
+      .then((data) => {
+        setWeather(data);
+      })
+      .catch((err) => {
+        console.log(`error ${err}`);
+      });
+  };
+
+  useEffect(() => {
+    fetchWeatherData();
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {weather && (
+        <WeatherGrid
+          location={weather.location}
+          current={weather.current}
+          forecast={weather.forecast}
+        />
+      )}
     </div>
   );
 }
