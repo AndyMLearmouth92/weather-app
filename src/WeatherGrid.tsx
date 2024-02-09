@@ -21,7 +21,7 @@ export const WeatherGrid = ({ location, current, forecast }: WeatherData) => {
     },
     { id: 5, col1: 'Wind speed', col2: `${current.wind_mph} mph` },
     { id: 6, col1: 'Wind direction', col2: current.wind_dir },
-    { id: 7, col1: 'Gust', col2: current.gust_mph },
+    { id: 7, col1: 'Gust', col2: `${current.gust_mph} mph` },
     {
       id: 8,
       col1: 'Humidity',
@@ -43,7 +43,7 @@ export const WeatherGrid = ({ location, current, forecast }: WeatherData) => {
 
   const columns: GridColDef[] = [
     { field: 'col1', headerName: 'Information', width: 150 },
-    { field: 'col2', headerName: 'Day', width: 150 },
+    { field: 'col2', headerName: 'Current', width: 150 },
     { field: 'col3', headerName: 'Column 2' },
     { field: 'col4', headerName: 'Column 3' },
   ];

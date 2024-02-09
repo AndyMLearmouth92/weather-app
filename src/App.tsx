@@ -2,6 +2,7 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import { WeatherGrid } from './WeatherGrid';
 import { type WeatherData } from './ApiInterface';
+import MiniDrawer from './SideDrawer';
 
 function App() {
   const [weather, setWeather] = useState<WeatherData>();
@@ -24,13 +25,14 @@ function App() {
   }, []);
   return (
     <div className="App">
-      {weather && (
+      <MiniDrawer weather={weather} />
+      {/* {weather && (
         <WeatherGrid
           location={weather.location}
           current={weather.current}
           forecast={weather.forecast}
         />
-      )}
+      )} */}
     </div>
   );
 }
