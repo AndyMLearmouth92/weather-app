@@ -1,4 +1,4 @@
-interface Location {
+export interface Location {
   name: string;
   region: string;
   country: string;
@@ -15,7 +15,7 @@ interface Condition {
   code: number;
 }
 
-interface Current {
+export interface Current {
   last_updated_epoch: number;
   last_updated: string;
   temp_c: number;
@@ -41,7 +41,7 @@ interface Current {
   gust_kph: number;
 }
 
-interface DayForecast {
+export interface DayForecast {
   maxtemp_c: number;
   maxtemp_f: number;
   mintemp_c: number;
@@ -122,7 +122,7 @@ interface ForecastDay {
   hour: HourlyForecast[];
 }
 
-interface Forecast {
+export interface Forecast {
   forecastday: ForecastDay[];
 }
 
