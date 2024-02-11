@@ -89,8 +89,8 @@ export const WeatherGridDayOne: React.FC<WeatherGridDayOneProps> = ({
   const gridColDefs: GridColDef[] = columns.map((header, index) => ({
     field: `col${index + 1}`,
     headerName: header,
-    width: header === "Condition" ? 150 : 125,
-    headerClassName: "super-app-theme--header",
+    width: header === "Condition" ? 150 : 115,
+    headerClassName: "header",
     headerAlign: "center",
     align: "center",
   }));
@@ -102,7 +102,7 @@ export const WeatherGridDayOne: React.FC<WeatherGridDayOneProps> = ({
       <h1>The Weather in {location.name} is:</h1>
       <Box
         sx={{
-          "& .super-app-theme--header": {
+          "& .header": {
             backgroundColor: "rgba(255, 7, 0, 0.55)",
           },
         }}

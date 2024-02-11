@@ -2,10 +2,10 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import { WeatherGrid } from "./WeatherGrid";
 import { type WeatherData } from "./ApiInterface";
-import MiniDrawer from "./SideDrawer";
+import PermanentDrawerLeft from "./SideDrawer";
 import { LocationInformation } from "./LocationInformation";
 
-function App() {
+const App = () => {
   const [weather, setWeather] = useState<WeatherData>();
 
   const fetchWeatherData = async () => {
@@ -26,7 +26,7 @@ function App() {
   }, []);
   return (
     <div className="App">
-      {weather && <MiniDrawer weather={weather} />}
+      {weather && <PermanentDrawerLeft weather={weather} />}
       {/* <WeatherGridDayOne /> */}
       {/* {weather && (
         <WeatherGrid
@@ -37,6 +37,6 @@ function App() {
       )} */}
     </div>
   );
-}
+};
 
 export default App;
