@@ -1,11 +1,15 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import { type WeatherData } from './ApiInterface';
-import PermanentDrawerLeft from './SideDrawer';
+import { PermanentDrawerLeft } from './SideDrawer';
 import { LocationInformation } from './LocationInformation';
 
 const App = () => {
   const [weather, setWeather] = useState<WeatherData>();
+  const [input, setInput] =
+    useState<React.SetStateAction<String | undefined>>();
+
+  console.log(input);
 
   const fetchWeatherData = async () => {
     await fetch(
@@ -25,7 +29,13 @@ const App = () => {
   }, []);
   return (
     <div className="App">
-      {weather && <PermanentDrawerLeft weather={weather} />}
+      {weather && (
+        <PermanentDrawerLeft
+          weather={weather}
+          setInput={setInput}
+          input={input}
+        />
+      )}
     </div>
   );
 };

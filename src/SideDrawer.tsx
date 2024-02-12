@@ -16,14 +16,21 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { WeatherGridHours } from './WeatherGridHours';
+import { LocationInformation } from './LocationInformation';
 
 const drawerWidth = 240;
 
-export default function PermanentDrawerLeft({
-  weather,
-}: {
+interface PermanentDrawerLeftProps {
   weather: WeatherData;
-}) {
+  setInput: React.Dispatch<React.SetStateAction<String | undefined>>;
+  input: React.SetStateAction<String | undefined>;
+}
+
+export const PermanentDrawerLeft: React.FC<PermanentDrawerLeftProps> = ({
+  weather,
+  setInput,
+  input,
+}) => {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -84,6 +91,7 @@ export default function PermanentDrawerLeft({
         sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
       >
         <Toolbar />
+        <LocationInformation setInput={setInput} input={input} />
         {/* {weather && (
           <WeatherGrid
             location={weather.location}
@@ -91,13 +99,13 @@ export default function PermanentDrawerLeft({
             forecast={weather.forecast}
           />
         )} */}
-        {weather && (
+        {/* {weather && (
           <WeatherGridHours
             location={weather.location}
             forecast={weather.forecast}
           />
-        )}
+        )} */}
       </Box>
     </Box>
   );
-}
+};
