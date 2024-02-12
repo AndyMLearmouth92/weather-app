@@ -22,14 +22,12 @@ const drawerWidth = 240;
 
 interface PermanentDrawerLeftProps {
   weather: WeatherData;
-  setInput: React.Dispatch<React.SetStateAction<String | undefined>>;
-  input: React.SetStateAction<String | undefined>;
+  setLocation: React.Dispatch<React.SetStateAction<string | undefined>>;
 }
 
 export const PermanentDrawerLeft: React.FC<PermanentDrawerLeftProps> = ({
   weather,
-  setInput,
-  input,
+  setLocation,
 }) => {
   return (
     <Box sx={{ display: 'flex' }}>
@@ -91,7 +89,7 @@ export const PermanentDrawerLeft: React.FC<PermanentDrawerLeftProps> = ({
         sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
       >
         <Toolbar />
-        <LocationInformation setInput={setInput} input={input} />
+        <LocationInformation setLocation={setLocation} />
         {/* {weather && (
           <WeatherGrid
             location={weather.location}

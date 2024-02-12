@@ -6,18 +6,18 @@ import { LocationInformation } from './LocationInformation';
 
 const App = () => {
   const [weather, setWeather] = useState<WeatherData>();
-  const [input, setInput] =
-    useState<React.SetStateAction<String | undefined>>();
+  const [location, setLocation] = useState<string | undefined>();
 
-  console.log(input);
+  console.log(location);
 
-  const fetchWeatherData = async () => {
+  const fetchWeatherData = async (location: string | undefined) => {
     await fetch(
-      `http://api.weatherapi.com/v1/forecast.json?key=b6ce0c4ce6d646c8aaf91548240702&&q=London&days=3`
+      `http://api.weatherapi.com/v1/forecast.json?key=b6ce0c4ce6d646c8aaf91548240702&&q=${location}&days=3`
     )
       .then((res) => res.json()) // parse response as JSON
       .then((data) => {
         setWeather(data);
+        console.log(data);
       })
       .catch((err) => {
         console.log(`error ${err}`);
@@ -25,16 +25,13 @@ const App = () => {
   };
 
   useEffect(() => {
-    fetchWeatherData();
-  }, []);
+    fetchWeatherData(location);
+  }, [location]);
+
   return (
     <div className="App">
       {weather && (
-        <PermanentDrawerLeft
-          weather={weather}
-          setInput={setInput}
-          input={input}
-        />
+        <PermanentDrawerLeft weather={weather} setLocation={setLocation} />
       )}
     </div>
   );
