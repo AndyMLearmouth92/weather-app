@@ -1,21 +1,21 @@
-import { WeatherGrid } from "./WeatherGrid";
-import { WeatherData } from "./ApiInterface";
-import { WeatherGridDayOne } from "./WeatherGridDayOne";
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import CssBaseline from "@mui/material/CssBaseline";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import { WeatherData } from './ApiInterface';
+import { WeatherGridOverview } from './WeatherGridOverview';
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import CssBaseline from '@mui/material/CssBaseline';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import List from '@mui/material/List';
+import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
+import { WeatherGridHours } from './WeatherGridHours';
 
 const drawerWidth = 240;
 
@@ -25,7 +25,7 @@ export default function PermanentDrawerLeft({
   weather: WeatherData;
 }) {
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -41,9 +41,9 @@ export default function PermanentDrawerLeft({
         sx={{
           width: drawerWidth,
           flexShrink: 0,
-          "& .MuiDrawer-paper": {
+          '& .MuiDrawer-paper': {
             width: drawerWidth,
-            boxSizing: "border-box",
+            boxSizing: 'border-box',
           },
         }}
         variant="permanent"
@@ -52,7 +52,22 @@ export default function PermanentDrawerLeft({
         <Toolbar />
         <Divider />
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+          {['Location', 'Three day overview', 'Day 1', 'Day 2', 'Day 3'].map(
+            (text, index) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>
+                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            )
+          )}
+        </List>
+        {/* <Divider /> */}
+        {/* <List>
+          {['All mail', 'Trash', 'Spam'].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
@@ -62,24 +77,11 @@ export default function PermanentDrawerLeft({
               </ListItemButton>
             </ListItem>
           ))}
-        </List>
-        <Divider />
-        <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+        </List> */}
       </Drawer>
       <Box
         component="main"
-        sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
+        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
       >
         <Toolbar />
         {/* {weather && (
@@ -90,9 +92,8 @@ export default function PermanentDrawerLeft({
           />
         )} */}
         {weather && (
-          <WeatherGridDayOne
+          <WeatherGridHours
             location={weather.location}
-            current={weather.current}
             forecast={weather.forecast}
           />
         )}

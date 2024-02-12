@@ -75,7 +75,7 @@ interface Astro {
   is_sun_up: number;
 }
 
-interface HourlyForecast {
+export interface HourlyForecast {
   time_epoch: number;
   time: string;
   temp_c: number;

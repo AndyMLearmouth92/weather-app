@@ -1,9 +1,8 @@
-import "./App.css";
-import { useState, useEffect } from "react";
-import { WeatherGrid } from "./WeatherGrid";
-import { type WeatherData } from "./ApiInterface";
-import PermanentDrawerLeft from "./SideDrawer";
-import { LocationInformation } from "./LocationInformation";
+import './App.css';
+import { useState, useEffect } from 'react';
+import { type WeatherData } from './ApiInterface';
+import PermanentDrawerLeft from './SideDrawer';
+import { LocationInformation } from './LocationInformation';
 
 const App = () => {
   const [weather, setWeather] = useState<WeatherData>();
@@ -27,14 +26,6 @@ const App = () => {
   return (
     <div className="App">
       {weather && <PermanentDrawerLeft weather={weather} />}
-      {/* <WeatherGridDayOne /> */}
-      {/* {weather && (
-        <WeatherGrid
-          location={weather.location}
-          current={weather.current}
-          forecast={weather.forecast}
-        />
-      )} */}
     </div>
   );
 };
