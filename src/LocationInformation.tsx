@@ -1,8 +1,8 @@
-import { Box } from '@mui/material';
-import { Search } from './Search';
+import { Box } from "@mui/material";
+import { Search } from "./Search";
 
 interface LocationInformationProps {
-  setLocation: React.Dispatch<React.SetStateAction<string | undefined>>;
+  setLocation: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const LocationInformation: React.FC<LocationInformationProps> = ({

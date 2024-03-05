@@ -1,28 +1,28 @@
-import { WeatherData } from './ApiInterface';
-import { WeatherGridOverview } from './WeatherGridOverview';
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import CssBaseline from '@mui/material/CssBaseline';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import { WeatherGridHours } from './WeatherGridHours';
-import { LocationInformation } from './LocationInformation';
+import { WeatherData } from "./ApiInterface";
+import { WeatherGridOverview } from "./WeatherGridOverview";
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Drawer from "@mui/material/Drawer";
+import CssBaseline from "@mui/material/CssBaseline";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import List from "@mui/material/List";
+import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import InboxIcon from "@mui/icons-material/MoveToInbox";
+import MailIcon from "@mui/icons-material/Mail";
+import { WeatherGridHours } from "./WeatherGridHours";
+import { LocationInformation } from "./LocationInformation";
 
 const drawerWidth = 240;
 
 interface PermanentDrawerLeftProps {
   weather: WeatherData;
-  setLocation: React.Dispatch<React.SetStateAction<string | undefined>>;
+  setLocation: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const PermanentDrawerLeft: React.FC<PermanentDrawerLeftProps> = ({
@@ -30,7 +30,7 @@ export const PermanentDrawerLeft: React.FC<PermanentDrawerLeftProps> = ({
   setLocation,
 }) => {
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -46,9 +46,9 @@ export const PermanentDrawerLeft: React.FC<PermanentDrawerLeftProps> = ({
         sx={{
           width: drawerWidth,
           flexShrink: 0,
-          '& .MuiDrawer-paper': {
+          "& .MuiDrawer-paper": {
             width: drawerWidth,
-            boxSizing: 'border-box',
+            boxSizing: "border-box",
           },
         }}
         variant="permanent"
@@ -57,7 +57,7 @@ export const PermanentDrawerLeft: React.FC<PermanentDrawerLeftProps> = ({
         <Toolbar />
         <Divider />
         <List>
-          {['Location', 'Three day overview', 'Day 1', 'Day 2', 'Day 3'].map(
+          {["Location", "Three day overview", "Day 1", "Day 2", "Day 3"].map(
             (text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
@@ -86,17 +86,17 @@ export const PermanentDrawerLeft: React.FC<PermanentDrawerLeftProps> = ({
       </Drawer>
       <Box
         component="main"
-        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
+        sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
       >
         <Toolbar />
         <LocationInformation setLocation={setLocation} />
-        {/* {weather && (
-          <WeatherGrid
+        {weather && (
+          <WeatherGridOverview
             location={weather.location}
             current={weather.current}
             forecast={weather.forecast}
           />
-        )} */}
+        )}
         {/* {weather && (
           <WeatherGridHours
             location={weather.location}
