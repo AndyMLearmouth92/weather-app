@@ -64,7 +64,7 @@ export const WeatherGridOverview: React.FC<WeatherGridDayOneProps> = ({
           },
         }}
       >
-        <DataGrid rows={rowsData} columns={gridColDefs} />
+        <DataGrid rows={rowsData} columns={gridColDefs} hideFooter />
       </Box>
     </div>
   );
